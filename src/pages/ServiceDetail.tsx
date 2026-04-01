@@ -2,6 +2,21 @@ import { useParams, Link } from "react-router-dom";
 import Layout from "@/components/Layout";
 import { ArrowRight, CheckCircle, ChevronDown } from "lucide-react";
 import { useState } from "react";
+import serviceFinance from "@/assets/service-finance.jpg";
+import serviceInventory from "@/assets/service-inventory.jpg";
+import serviceTalent from "@/assets/service-talent.jpg";
+import serviceSourcing from "@/assets/service-sourcing.jpg";
+
+const serviceImages: Record<string, string> = {
+  "order-to-cash": serviceFinance,
+  "bookkeeping": serviceFinance,
+  "ar-ap-services": serviceFinance,
+  "inventory-valuation": serviceInventory,
+  "order-management": serviceInventory,
+  "back-office-support": serviceTalent,
+  "sourcing-procurement": serviceSourcing,
+  "talent-outsourcing": serviceTalent,
+};
 
 interface ServiceData {
   title: string;
