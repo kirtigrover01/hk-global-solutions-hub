@@ -2,6 +2,21 @@ import { useParams, Link } from "react-router-dom";
 import Layout from "@/components/Layout";
 import { ArrowRight, CheckCircle, ChevronDown } from "lucide-react";
 import { useState } from "react";
+import serviceFinance from "@/assets/service-finance.jpg";
+import serviceInventory from "@/assets/service-inventory.jpg";
+import serviceTalent from "@/assets/service-talent.jpg";
+import serviceSourcing from "@/assets/service-sourcing.jpg";
+
+const serviceImages: Record<string, string> = {
+  "order-to-cash": serviceFinance,
+  "bookkeeping": serviceFinance,
+  "ar-ap-services": serviceFinance,
+  "inventory-valuation": serviceInventory,
+  "order-management": serviceInventory,
+  "back-office-support": serviceTalent,
+  "sourcing-procurement": serviceSourcing,
+  "talent-outsourcing": serviceTalent,
+};
 
 interface ServiceData {
   title: string;
@@ -226,17 +241,24 @@ const ServiceDetail = () => {
   return (
     <Layout>
       {/* Hero */}
-      <section className="bg-primary section-padding">
-        <div className="container-narrow mx-auto text-center">
+      <section className="relative overflow-hidden bg-primary section-padding">
+        <div className="absolute inset-0">
+          <img src={serviceImages[slug || ""] || serviceFinance} alt="" className="w-full h-full object-cover opacity-15" width={1280} height={720} />
+          <div className="absolute inset-0 bg-gradient-to-r from-primary via-primary/95 to-primary/80" />
+        </div>
+        <div className="relative container-narrow mx-auto text-center">
           <p className="text-accent font-semibold text-sm tracking-wider uppercase mb-3">{data.title}</p>
           <h1 className="text-3xl md:text-5xl font-extrabold text-primary-foreground mb-6 max-w-4xl mx-auto">{data.subtitle}</h1>
         </div>
       </section>
 
-      {/* Description */}
+      {/* Description with Image */}
       <section className="section-padding bg-background">
-        <div className="container-narrow mx-auto max-w-4xl">
+        <div className="container-narrow mx-auto grid md:grid-cols-2 gap-12 items-center">
           <p className="text-lg text-muted-foreground leading-relaxed">{data.description}</p>
+          <div className="rounded-2xl overflow-hidden shadow-lg">
+            <img src={serviceImages[slug || ""] || serviceFinance} alt={data.title} className="w-full h-auto object-cover" loading="lazy" width={1280} height={720} />
+          </div>
         </div>
       </section>
 

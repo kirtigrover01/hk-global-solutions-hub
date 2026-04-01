@@ -25,7 +25,7 @@ const Header = () => {
     <header className="sticky top-0 z-50 bg-background/95 backdrop-blur-md border-b border-border">
       <div className="container-narrow mx-auto flex items-center justify-between h-20 px-4">
         <Link to="/" className="flex items-center gap-2">
-          <img src={logo} alt="HK Global Infotech" className="h-12" />
+          <img src={logo} alt="HK Global Infotech" className="h-16 md:h-20" />
         </Link>
 
         {/* Desktop Nav */}
